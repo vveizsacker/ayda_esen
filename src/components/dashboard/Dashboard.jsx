@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useAdminService from "../../services/useAdminService"
 
-
+import ManageClients from "../manage-clients/ManageClients";
 
 export default function Dashboard()
 {
@@ -62,6 +62,7 @@ export default function Dashboard()
                 </div>
 
             </header>
+            <ManageClients/>
         </>
     )
 }

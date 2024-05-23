@@ -115,7 +115,7 @@ export default function List() {
 					</div>
 
 					<form action="" className="flex flex-col gap-2 p-4 h-5/6" onSubmit={UpdatePartner} onChange={handleChange}>
-						<input type="text" className="border-2 p-2 rounded-xl border-red-600" name="username" placeholder="username" value={formData.username} />
+						<input type="text" className="border-2 p-2 rounded-xl" name="username" placeholder="username" value={formData.username} />
 						<p className="text-red-600">Email already exists</p>
 						<input type="text" className="border-2 p-2 rounded-xl" name="nom" placeholder="nom" value={formData.nom} />
 						<input type="text" className="border-2 p-2 rounded-xl" name="prenom" placeholder="prenom" value={formData.prenom} />
