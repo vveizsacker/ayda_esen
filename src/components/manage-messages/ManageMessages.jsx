@@ -48,11 +48,7 @@ export default function ManageMessages() {
 	]
 
 	const {ShowMessage} = useContext(SnackBarContext)
-	async function DeleteMessage()
-	{
-		ShowMessage("erreur lors de la suppression de le message de "+selected.email,"red",3)
-		setOpen(false)
-	}
+
 	async function GetMessages()
 	{
 		const messages = await admin.GetSupportMessages();
@@ -77,13 +73,7 @@ export default function ManageMessages() {
 	
 	return (
 		<div>
-		
-		<Alert
-			confirm={DeleteMessage}
-			open={alert}
-			setOpen={setAlert}
-			message={"vous est sure pour supprimer message de "+selected.email}
-		/>
+
 
 		<Modal
             className="flex justify-center items-center"
@@ -119,7 +109,6 @@ export default function ManageMessages() {
                             </div>
                         </div>
                         <div className="w-full h-full border-2 p-2 rounded-xl ">{selected.message}</div>
-                        <button className="border-red-500 border-2 p-4 text-red-500 rounded-xl" onClick={()=>setAlert(true)}>Supprimer</button>
 					</div>
 				</div>
 				

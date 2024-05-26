@@ -35,18 +35,21 @@ export default function ManageDrivers() {
 
 	async function DeleteDriver()
 	{
-		//e.preventDefault();
 		setOpen(false);
 		const response = await axios.delete(url+"/driver/"+selected.email);
 		console.log(response)
+		GetDrivers()
 	}
+	
 	async function UpdateDriver(e)
 	{
 		e.preventDefault();
 		setOpen(false);
-		const response = await axios.put(url+"/driver/"+selected.email);
+		const response = await axios.put(url+"/driver/"+selected.email,formData);
 		console.log(response)
+		GetDrivers()
 	}
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -64,7 +67,7 @@ export default function ManageDrivers() {
 		<div>
 
 		<Modal
-		            className="flex justify-center items-center"
+			className="flex justify-center items-center"
 
 			open={open}
 			onClose={()=>setOpen(false)}
@@ -101,6 +104,9 @@ export default function ManageDrivers() {
 			header={header}
 			data={data}
 			title={"livereurs"}
+			setSelected={setSelected}
+			setFormData={setFormData}
+			setOpen={setOpen}
 		/>
 
     </div>

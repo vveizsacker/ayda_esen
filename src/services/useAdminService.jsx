@@ -21,6 +21,7 @@ export default function useAdminService()
     async function GetDrivers()
     {
         const response = await axios.get(URL+"/drivers");
+        console.log(response)
         const data = await response.data;
         return data;
     }

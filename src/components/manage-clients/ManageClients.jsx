@@ -24,12 +24,13 @@ export default function ManageClients() {
 		{text:"role",key:"role",size:"10%"},
 	]
 
+
 	async function UpdateUser(e)
 	{
 		e.preventDefault();
 		setOpen(false);
-		const response = await axios.put(url+"/user/"+selected.email);
-		console.log(response)
+		const response = await axios.put(url+"/user/"+selected.email,formData);
+		console.log(response.data)
 	}
     const handleChange = (e) => {
         const { name, value } = e.target;

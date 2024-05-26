@@ -59,22 +59,28 @@ export default function List() {
 
 	async function DeletePartner()
 	{
-		//e.preventDefault();
 		setOpen(false);
-		ShowMessage("le partenaire a ete supprimer avec succès","green",3);
-		//const response = await axios.delete(url+"/partner/"+selected.email);
-		//console.log(response)
+		const response = await axios.delete(url+"/partner/"+selected.email);
+
+		const newList = data.filter(item => item.email !== selected.email);
+		setData(newList)
+		if(response.ok)
+			ShowMessage("le partenaire a ete supprimer avec succès","green",3);
+
+		console.log(response)
 	}
 	const{ShowMessage} = useContext(SnackBarContext)
 	async function UpdatePartner(e)
 	{
 		e.preventDefault();
 		setOpen(false);
-		ShowMessage("les données de l'utilisateur ont été mises à jour avec succès","green",3);
-		/*
-		const response = await axios.put(url+"/partner/"+selected.email);
+		const response = await axios.put(url+"/partner/"+selected.email,formData);
+		
+		
+		if(response.status == 200)
+			ShowMessage("les données de l'utilisateur ont été mises à jour avec succès","green",3);
 		console.log(response)
-		*/
+		
 	}
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -116,7 +122,6 @@ export default function List() {
 
 					<form action="" className="flex flex-col gap-2 p-4 h-5/6" onSubmit={UpdatePartner} onChange={handleChange}>
 						<input type="text" className="border-2 p-2 rounded-xl" name="username" placeholder="username" value={formData.username} />
-						<p className="text-red-600">Email already exists</p>
 						<input type="text" className="border-2 p-2 rounded-xl" name="nom" placeholder="nom" value={formData.nom} />
 						<input type="text" className="border-2 p-2 rounded-xl" name="prenom" placeholder="prenom" value={formData.prenom} />
 						<input type="text" className="border-2 p-2 rounded-xl" name="adresse" placeholder="adresse" value={formData.adresse} />
